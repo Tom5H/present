@@ -1,0 +1,40 @@
+\usetheme{Madrid}
+
+\usepackage[style=numeric,sorting=none,backend=biber]{biblatex}
+\bibliography{references.bib}
+\renewcommand*{\bibfont}{\scriptsize}
+\setbeamertemplate{bibliography item}{\scriptsize\insertbiblabel}
+
+\title{\textbf{my title}}
+\author{my author}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+\note{
+  notes here...
+}
+
+\begin{frame}{Contents}
+  \tableofcontents
+\end{frame}
+
+\section{first section}
+\begin{frame}{my frametitle}{my framesubtitle}
+  \begin{enumerate}
+    \item first \cite{one}
+    \item second
+  \end{enumerate}
+\end{frame}
+\note{
+  even more notes...
+}
+
+\section{References}
+\begin{frame}[t,allowframebreaks]{References}
+  \printbibliography
+\end{frame}
+
+\end{document}

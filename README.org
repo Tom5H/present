@@ -1,0 +1,19 @@
+* Make tool and template for commented and uncommented LaTeX beamer presentations
+This [[https://www.gnu.org/software/make/][GNU make]] program builds commented and uncommented versions of the same LaTeX beamer presentation. Slides and notes can both be written in one place and then be compiled to seperate pdf files. See the [[./handout.pdf][handout]] or the [[./presentation.pdf][presentation]] for examples. This tool and template is intended as a working minimal but structured and organized starting point. Extend and modify it to fit your specific needs.
+
+** Prerequesites
+- GNU make
+- Working LaTeX installation
+
+** Getting started
+Call =make init= to run the LaTeX build comands. Use =make all= for subsequent builds to also run the bibliography commands alongside the LaTeX build commands.
+
+Write your presentation and notes in the =tex/main.tex= file.
+
+** Documentation
+*** Structure
+The top level directory holds the make program and the compiled pdf files. Tex and bib files live in the tex/ directory. All build files created by the LaTeX compiler are placed into the tex/.build/ directory to prevent cluttering in the working directories.
+*** Tex files
+The =handout.tex= and =presentation.tex= files are used as targets for the build commands and contain specific information to construct the corresponding pdf files. Both these files include the =main.tex= file which contains the slides and notes of the presentation as well as shared configuration for the different pdf outputs.
+*** The make program
+The make program has several functions which call the according LaTeX build commands. =make handout= builds a pdf file contatining the notes, =make presentation= build a pdf file which does not contain the notes. =make bib= runs biber on both the handout and presentation. Note that for =make bib= to work =make handout= and =make presentation= must have been called at least once. =make init= runs both =make handout= and =make presentation= and should be ran once before calling =make all= for subsequent builds. =make all= runs =make bib=, =make handout= and =make presentation=. Run =make= or =make help= for a brief overview of the make program.
